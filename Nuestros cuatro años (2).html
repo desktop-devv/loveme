@@ -1,0 +1,911 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Nuestros cuatro años</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500&family=Caveat:wght@600&display=swap">
+<style>
+/* Concepto: un cielo nocturno. Cada día juntos es una estrella dentro de un corazón; el resto de la página gira alrededor de ese cielo. */
+:root {
+  --bg: #0f0b1f;
+  --bg-2: #1b1336;
+  --fg: #f3ecf7;
+  --muted: #a99dc4;
+  --star: #ffe3a8;
+  --rose: #ff7a9a;
+  --line: rgba(255, 255, 255, 0.14);
+  --paper: #f6efe6;
+  --ink: #2a1b3d;
+  --env-back: #6f2650;
+  --env-front: #9a3766;
+  --env-flap: #b7457a;
+  --f-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --f-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-hand: "Caveat", "Segoe Print", cursive;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(60rem 40rem at 80% -10%, rgba(255, 122, 154, 0.14), transparent 60%),
+    radial-gradient(50rem 40rem at 0% 30%, rgba(120, 90, 220, 0.18), transparent 60%);
+  background-attachment: fixed;
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  overflow-x: hidden;
+}
+h1, h2 { font-family: var(--f-display); font-weight: 500; line-height: 1.05; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.wrap { max-width: 720px; margin: 0 auto; }
+section { padding-block: 72px; }
+.eyebrow { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--star); outline-offset: 3px; }
+
+/* Hero */
+.hero { text-align: center; padding-top: 88px; padding-bottom: 56px; }
+.hero .big { font-size: clamp(120px, 34vw, 220px); font-style: italic; color: var(--star); line-height: 0.85; margin-top: 12px; }
+.hero h1 { font-size: clamp(34px, 8vw, 56px); font-style: italic; margin-top: 4px; }
+.hero .sub { color: var(--muted); max-width: 30em; margin: 20px auto 0; }
+
+/* Contador */
+.counter { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px; margin-top: 28px; }
+.unit { border: 1px solid var(--line); border-radius: 14px; padding: 16px 8px 12px; text-align: center; background: rgba(255, 255, 255, 0.03); }
+.unit b { display: block; font-family: var(--f-display); font-size: 44px; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; }
+.unit span { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.unit.hot b { color: var(--rose); }
+.note { color: var(--muted); font-size: 15px; margin-top: 18px; text-align: center; }
+
+/* Cielo */
+.sky h2 { font-size: clamp(34px, 7vw, 52px); font-style: italic; }
+.sky .lead { color: var(--muted); margin-top: 12px; max-width: 34em; }
+.sky-box { margin-top: 28px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(180deg, #0b0818, #150e2b); padding: 10px; }
+#sky { display: block; width: 100%; aspect-ratio: 2.5 / 2.4; touch-action: manipulation; cursor: pointer; }
+.sky-text { min-height: 5.2em; margin-top: 18px; padding: 0 6px; }
+.sky-text .when { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.sky-text .msg { font-family: var(--f-display); font-style: italic; font-size: 26px; line-height: 1.25; color: var(--star); margin-top: 6px; text-wrap: balance; }
+
+/* Vales */
+.vales h2 { font-size: clamp(34px, 7vw, 52px); font-style: italic; }
+.vales .lead { color: var(--muted); margin-top: 12px; }
+.tickets { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 28px; }
+.ticket { position: relative; text-align: left; border: 0; padding: 20px 20px 18px 28px; background: var(--paper); color: var(--ink); border-radius: 6px 14px 14px 6px; min-height: 148px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; transition: transform 0.2s ease; }
+.ticket:hover { transform: rotate(-0.6deg) translateY(-2px); }
+.ticket::before { content: ""; position: absolute; left: 10px; top: 14px; bottom: 14px; border-left: 2px dashed rgba(42, 27, 61, 0.35); }
+.ticket small { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #7a6a8c; }
+.ticket strong { font-family: var(--f-display); font-size: 26px; line-height: 1.1; font-weight: 600; }
+.ticket .stamp { position: absolute; right: 14px; bottom: 12px; font-family: var(--f-hand); font-size: 28px; color: var(--rose); border: 3px solid var(--rose); border-radius: 8px; padding: 0 10px; transform: rotate(-9deg) scale(0.6); opacity: 0; transition: all 0.25s ease; }
+.ticket[aria-pressed="true"] { filter: saturate(0.5) brightness(0.88); }
+.ticket[aria-pressed="true"] .stamp { opacity: 1; transform: rotate(-9deg) scale(1); }
+.hint { color: var(--muted); font-size: 14px; margin-top: 14px; }
+
+/* Contrato */
+.contract h2 { font-size: clamp(34px, 7vw, 52px); font-style: italic; text-align: center; }
+.paper { margin-top: 28px; background: var(--paper); color: var(--ink); border-radius: 10px; padding: 32px 26px 26px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45); }
+.paper h3 { font-family: var(--f-display); font-size: 22px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; margin: 0 0 18px; }
+.paper ol { margin: 0; padding-left: 22px; display: grid; gap: 10px; }
+.paper li::marker { font-family: var(--f-display); font-weight: 600; }
+.decide { position: relative; height: 150px; margin-top: 18px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+.yes { background: var(--rose); color: #2a0f1d; border: 0; border-radius: 999px; padding: 14px 26px; font-weight: 500; font-size: 18px; transition: transform 0.25s ease; z-index: 2; }
+.no { background: transparent; border: 1.5px solid var(--ink); color: var(--ink); border-radius: 999px; padding: 12px 20px; transition: left 0.18s ease, top 0.18s ease; white-space: nowrap; }
+.plea { text-align: center; font-family: var(--f-display); font-style: italic; font-size: 22px; line-height: 1.25; min-height: 3.4em; margin-top: 4px; text-wrap: balance; color: #5b3a63; }
+.signed { text-align: center; padding-top: 8px; }
+.signed .hand { font-family: var(--f-hand); font-size: 44px; color: var(--rose); line-height: 1.1; }
+.signed .date { font-size: 14px; color: #6b5b7e; margin-top: 4px; }
+.foot { text-align: center; color: var(--muted); font-size: 14px; padding-block: 8px 72px; }
+#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
+
+/* Sobre */
+#gate { position: fixed; inset: 0; z-index: 100; background: var(--bg); background-image: radial-gradient(40rem 30rem at 50% 40%, rgba(255, 122, 154, 0.16), transparent 70%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px; padding: env(safe-area-inset-top, 0px) max(16px, env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(16px, env(safe-area-inset-left, 0px)); text-align: center; transition: opacity 0.7s ease; }
+#gate.leaving { opacity: 0; pointer-events: none; }
+.env { position: relative; width: min(78vw, 320px); aspect-ratio: 3 / 2; perspective: 900px; margin-top: 90px; }
+.env > * { position: absolute; }
+.env-back { inset: 0; background: var(--env-back); border-radius: 6px; }
+.letter { left: 7%; right: 7%; top: 8%; height: 86%; background: var(--paper); color: var(--ink); border-radius: 4px; z-index: 1; padding: 14px 14px; display: flex; flex-direction: column; justify-content: center; gap: 4px; transition: transform 0.9s cubic-bezier(0.3, 0.7, 0.2, 1) 0.45s; }
+.letter .to { font-family: var(--f-hand); font-size: 28px; line-height: 1; color: var(--rose); }
+.letter p { font-size: 14px; line-height: 1.35; }
+.env-front { inset: 0; background: var(--env-front); clip-path: polygon(0 100%, 0 0, 50% 58%, 100% 0, 100% 100%); border-radius: 6px; z-index: 2; }
+.flap { left: 0; right: 0; top: 0; height: 58%; background: var(--env-flap); clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top; z-index: 3; transition: transform 0.6s ease, z-index 0s 0.3s; }
+.seal { left: 50%; top: 58%; width: 54px; height: 54px; margin: -27px 0 0 -27px; border-radius: 50%; border: 0; background: var(--rose); color: #2a0f1d; font-size: 24px; z-index: 4; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4); animation: beat 1.6s ease-in-out infinite; }
+@keyframes beat { 50% { transform: scale(1.12); } }
+#gate.open .flap { transform: rotateX(180deg); z-index: 0; }
+#gate.open .letter { transform: translateY(-62%); z-index: 2; }
+#gate.open .seal { opacity: 0; pointer-events: none; animation: none; }
+#gate .tap { color: var(--muted); font-size: 15px; }
+#enter { background: var(--star); color: #2b1d08; border: 0; border-radius: 999px; padding: 12px 28px; font-weight: 500; opacity: 0; pointer-events: none; transition: opacity 0.5s ease 1.3s; }
+#gate.open #enter { opacity: 1; pointer-events: auto; }
+#gate.open .tap { display: none; }
+
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  .unit b { font-size: 38px; }
+  .sky-text .msg { font-size: 23px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .seal { animation: none; }
+  .ticket, .yes, .no, .letter, .flap { transition: none; }
+}
+</style>
+
+<div id="gate">
+  <div class="env" id="env">
+    <div class="env-back"></div>
+    <div class="letter"><div class="to" id="to-name"></div><p>Hoy hace cuatro años que empezamos. Abre esto con calma.</p></div>
+    <div class="env-front"></div>
+    <div class="flap"></div>
+    <button class="seal" id="seal" aria-label="Abrir el sobre">&#9829;</button>
+  </div>
+  <p class="tap">Toca el corazón para abrir</p>
+  <button id="enter" type="button">Entrar</button>
+</div>
+
+<main class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Para <span id="hero-name"></span></p>
+    <div class="big" aria-hidden="true">4</div>
+    <h1>años contigo</h1>
+    <p class="sub">Hice esta página para contarte algo que ya sabes: cada día que pasa te elijo un poco más.</p>
+  </header>
+
+  <section aria-labelledby="t-counter" style="padding-top:24px">
+    <h2 id="t-counter" class="eyebrow" style="font-family:var(--f-body)">Tiempo juntos, ahora mismo</h2>
+    <div class="counter" id="counter"></div>
+    <p class="note" id="counter-note"></p>
+  </section>
+
+  <section class="sky" aria-labelledby="t-sky">
+    <h2 id="t-sky"><span id="n-days"></span> días, <span id="n-stars"></span> estrellas</h2>
+    <p class="lead">Cada día que llevamos juntos es una estrella. Juntas forman un corazón. Toca las estrellas: las más brillantes guardan algo que quiero decirte.</p>
+    <div class="sky-box"><canvas id="sky" aria-label="Corazón formado por una estrella por cada día juntos"></canvas></div>
+    <div class="sky-text" aria-live="polite" id="sky-text"></div>
+  </section>
+
+  <section class="vales" aria-labelledby="t-vales">
+    <h2 id="t-vales">Cuatro vales, uno por año</h2>
+    <p class="lead">Son tuyos. Tócalos para canjearlos y se sellan.</p>
+    <div class="tickets" id="tickets"></div>
+    <p class="hint">Los sellos se guardan en este dispositivo.</p>
+  </section>
+
+  <section class="contract" aria-labelledby="t-contract">
+    <h2 id="t-contract">Una última cosa</h2>
+    <div class="paper">
+      <h3>Contrato de renovación</h3>
+      <ol>
+        <li>Hacerte feliz todos los días sin falta.</li>
+        <li>Darte tu espacio, tus abrazos y tus antojos siempre que se pueda.</li>
+        <li>Estar de tu lado en absolutamente todo.</li>
+        <li>Renovar por 4 años más, porque no quiero a nadie más que no seas tú.</li>
+      </ol>
+      <div class="decide" id="decide">
+        <button class="yes" id="yes" type="button">Sí, acepto</button>
+        <button class="no" id="no" type="button">Lo pienso</button>
+      </div>
+      <p class="plea" id="plea" aria-live="polite">Pásate por el botón de la derecha. Te va a sorprender.</p>
+      <div class="signed" id="signed" hidden>
+        <div class="hand">Sí, acepto</div>
+        <div class="date" id="signed-date"></div>
+      </div>
+    </div>
+  </section>
+  <p class="foot">Te quiero. Feliz aniversario.</p>
+</main>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+/* Datos del regalo: cambia estos valores y todo lo demás se ajusta solo. */
+var NOMBRE = "mi amor";
+var START = new Date(2022, 9, 23, 0, 0, 0); // 23 de octubre de 2022
+var VALES = [
+  "Piensa lo que quieres pedirme (Sino es imposible lo ago)",
+  "Una fresa con crema",
+  "Ir al cine",
+  "Una hamburguesa"
+];
+
+var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+var $ = function (id) { return document.getElementById(id); };
+function safeGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function safeSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+function fechaLarga(d) { return d.toLocaleDateString("es-PE", { day: "numeric", month: "long", year: "numeric" }); }
+
+$("to-name").textContent = "Para " + NOMBRE;
+$("hero-name").textContent = NOMBRE;
+
+/* Sobre */
+$("seal").addEventListener("click", function () { $("gate").classList.add("open"); });
+$("enter").addEventListener("click", function () {
+  var g = $("gate"); g.classList.add("leaving");
+  setTimeout(function () { g.hidden = true; }, 750);
+  window.scrollTo(0, 0);
+});
+
+/* Contador */
+var UNITS = [["y", "año", "años"], ["m", "mes", "meses"], ["d", "día", "días"], ["h", "hora", "horas"], ["mi", "minuto", "minutos"], ["s", "segundo", "segundos"]];
+var counterEl = $("counter");
+UNITS.forEach(function (u, i) {
+  var div = document.createElement("div");
+  div.className = "unit" + (i === 5 ? " hot" : "");
+  div.innerHTML = '<b id="c-' + u[0] + '">0</b><span id="l-' + u[0] + '"></span>';
+  counterEl.appendChild(div);
+});
+function diffCal(a, b) {
+  var y = b.getFullYear() - a.getFullYear(), m = b.getMonth() - a.getMonth(), d = b.getDate() - a.getDate();
+  var h = b.getHours() - a.getHours(), mi = b.getMinutes() - a.getMinutes(), s = b.getSeconds() - a.getSeconds();
+  if (s < 0) { s += 60; mi--; }
+  if (mi < 0) { mi += 60; h--; }
+  if (h < 0) { h += 24; d--; }
+  if (d < 0) { d += new Date(b.getFullYear(), b.getMonth(), 0).getDate(); m--; }
+  if (m < 0) { m += 12; y--; }
+  return { y: y, m: m, d: d, h: h, mi: mi, s: s };
+}
+function tick() {
+  var now = new Date(), r = diffCal(START, now);
+  UNITS.forEach(function (u) {
+    $("c-" + u[0]).textContent = r[u[0]];
+    $("l-" + u[0]).textContent = r[u[0]] === 1 ? u[1] : u[2];
+  });
+  var days = Math.floor((now - START) / 864e5);
+  $("counter-note").textContent = "Desde el " + fechaLarga(START) + ". Son " + fmt(days) + " días y siguen sumando.";
+}
+tick(); setInterval(tick, 1000);
+
+/* Cielo: una estrella por día, dentro de un corazón */
+var N = Math.max(1, Math.floor((new Date() - START) / 864e5));
+$("n-days").textContent = fmt(N);
+$("n-stars").textContent = fmt(N);
+
+
+
+function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+/* ===== Frases de las estrellas =====
+   Escritas con las palabras y costumbres del chat de ustedes.
+   - Fechas especiales (aniversarios, cumpleaños, Navidad, Año Nuevo, San Valentín) tienen frase propia.
+   - Cada día 23 dice cuántos años y meses cumplen y, cuando existe, cita lo que se escribieron ese mes.
+   - El resto combina una escena y un cierre de un mismo tema; no se repite ninguna pareja. */
+var THEMES = [
+  {
+    a: [
+      "Eres mi pensamiento favorito.",
+      "Me enamoras cada día.",
+      "Me llenas de felicidad.",
+      "Pienso en ti siempre.",
+      "Tu presencia me calma.",
+      "Tu voz me enamora.",
+      "Me fascinas por completo.",
+      "Amo hablar contigo siempre.",
+      "Saber de ti me alegra.",
+      "Me gusta escribirte mucho.",
+      "Tus palabras me iluminan.",
+      "Verte me hace feliz.",
+      "Te amo con locura.",
+      "Amo tu linda compañía.",
+      "Te llevo en mi corazón.",
+      "Espero verte pronto siempre."
+    ],
+    b: [
+      "Me haces inmensamente feliz.",
+      "Eres mi pdja.",
+      "No te cambio jamás.",
+      "Eres el amor de mi vida.",
+      "Qué suerte tenerte conmigo.",
+      "Me encantas cada día.",
+      "Gracias por amarme tanto.",
+      "Ti amuuuuuuuuuuuuuuuuuuuuuuuu.",
+      "Sonrío gracias a ti.",
+      "Eres mi persona favorita.",
+      "Cuidaré nuestro hermoso amor.",
+      "Quédate siempre conmigo amor.",
+      "Sé que eres tú.",
+      "Amo cómo me amas.",
+      "Tu cariño me llena.",
+      "Contigo lo tengo todo."
+    ]
+  },
+  {
+    a: [
+      "Eres mi lugar seguro.",
+      "Gracias por tu amor.",
+      "Quiero estar contigo siempre.",
+      "Te guardo mi corazón.",
+      "Te pienso mi amor.",
+      "Amo tus lindos detalles.",
+      "Quiero un abrazo tuyo.",
+      "Me fascinas mi vida.",
+      "Tu amor me da paz.",
+      "Quiero darte lo mejor.",
+      "Amo cuando me sonríes.",
+      "Nos amamos muy bonito.",
+      "Quiero un futuro contigo.",
+      "Tenerte es mi regalo.",
+      "Tu felicidad me importa.",
+      "Nuestro amor es fuerte."
+    ],
+    b: [
+      "Vales todo mi amor.",
+      "Nos amamos con el alma.",
+      "Siempre estaré para ti.",
+      "Amo tu dulce forma.",
+      "Nos pertenecemos el uno al otro.",
+      "Pronto te abrazaré fuerte.",
+      "Nada apaga nuestro amor.",
+      "Gracias por ser mi vida.",
+      "Valoro mucho tu amor.",
+      "Tenemos una historia hermosa.",
+      "Lo nuestro es verdadero.",
+      "Te amo cada instante.",
+      "Haces especial mi vida.",
+      "Quiero caminar contigo siempre.",
+      "Me das paz.",
+      "Eres una mujer maravillosa."
+    ]
+  },
+  {
+    a: [
+      "Amarte me da paz.",
+      "Me da ternura verte.",
+      "Eres lo más bonito.",
+      "Vives en mi mente.",
+      "Un beso tuyo me vuelve loco.",
+      "Amo nuestra hermosa conexión.",
+      "Recordarte me hace feliz.",
+      "Leerte reconforta mi alma.",
+      "Vales mucho mi amor.",
+      "Quiero abrazarte muchas veces.",
+      "Me encantas.",
+      "Te mando un beso.",
+      "Me das mucha paz.",
+      "Pronto estaremos juntos siempre.",
+      "Te mereces mi amor.",
+      "Importas todo para mí."
+    ],
+    b: [
+      "Eres el amor de mi vida.",
+      "Te pienso a cada segundo.",
+      "Seguimos amándonos siempre.",
+      "Me haces tan feliz.",
+      "Eres mi sueño cumplido.",
+      "Gracias por tu existencia.",
+      "Agradezco tenerte mi vida.",
+      "Te mereces todo lo lindo.",
+      "Tu cariño me alegra.",
+      "Lo nuestro es para siempre.",
+      "Vales mi vida entera.",
+      "Te amo tal como eres.",
+      "Te mando mi corazón.",
+      "Contigo todo es mágico.",
+      "Qué orgullo ser tu novio.",
+      "Mi corazón es tuyo."
+    ]
+  },
+  {
+    a: [
+      "Confío en ti mi amor.",
+      "Me das paz absoluta.",
+      "Contigo soy totalmente feliz.",
+      "Sobran palabras entre nosotros.",
+      "Tu voz me enamora.",
+      "Nos tenemos mucha confianza.",
+      "Amarte es tan bonito.",
+      "Me das tanta fuerza.",
+      "Me amas tal cual soy.",
+      "Amo tu lealtad siempre.",
+      "Tu amor me llena el alma.",
+      "Caminemos juntos de la mano.",
+      "Tus mensajes me iluminan.",
+      "Soñamos el mismo futuro.",
+      "Eres mi lugar seguro.",
+      "Lo nuestro es amor."
+    ],
+    b: [
+      "Esto es para siempre.",
+      "Gracias por tu cariño.",
+      "Eres mi compañera ideal.",
+      "Cuidaré este hermoso amor.",
+      "Me das infinita serenidad.",
+      "Tenemos un amor puro.",
+      "Nuestra complicidad es hermosa.",
+      "Contigo lo puedo todo.",
+      "Eres mi lugar seguro.",
+      "Eres mi gran y unico amor.",
+      "Valoro tanto lo nuestro.",
+      "Nos amamos con locura.",
+      "Hacemos una pareja hermosa.",
+      "No me quedan dudas.",
+      "Confío en ti ciegamente.",
+      "Tu amor me llena."
+    ]
+  },
+  {
+    a: [
+      "Tengo ganas de verte ya.",
+      "Cada beso me vuelve lokito.",
+      "Cuento los días para vernos amor.",
+      "No te soltaré jamás.",
+      "La distancia no cambia nada.",
+      "Falta menos para abrazarnos.",
+      "Nos debemos mil besos.",
+      "Tu voz me acerca.",
+      "Disfruto amarte cada segundo.",
+      "Aprecio cada momento contigo.",
+      "Me emociona verte de nuevo.",
+      "Pienso en nuestro amor.",
+      "Mi corazón está contigo.",
+      "Tengo besos guardados tuyos.",
+      "Verte sonreír es mágico.",
+      "Estar a tu lado me encanta."
+    ],
+    b: [
+      "Valió la pena esperarte.",
+      "Nadie apaga nuestra llama.",
+      "Tu abrazo curará todo.",
+      "Siempre quiero volver a ti.",
+      "Mi amor solo crece.",
+      "Qué hermoso tenerte cerca.",
+      "Ya falta muy poco amor.",
+      "El tiempo volará juntos.",
+      "Demostramos cuánto nos amamos.",
+      "Eres mi dulce ilusión.",
+      "Haremos realidad nuestros sueños.",
+      "Gracias por tu lindo amor.",
+      "Eres mi hogar amado.",
+      "Elegirte es muy hermoso.",
+      "Espero volver a vernos.",
+      "Te amo con locura."
+    ]
+  },
+  {
+    a: [
+      "Me das mucho orgullo.",
+      "Amo tu hermosa alma.",
+      "Admiro todo de ti.",
+      "Celebraré tus triunfos siempre.",
+      "Eres increíble mi vida.",
+      "Qué afortunado de amarte.",
+      "Tienes una luz preciosa.",
+      "Yo creo en ti siempre.",
+      "Vas logrando tus sueños.",
+      "Tienes un corazón gigante.",
+      "Admiro tu dulce nobleza.",
+      "Aplaudiré cada logro tuyo.",
+      "Nadie se compara a ti.",
+      "Estoy orgulloso de ti.",
+      "Me haces querer ser mejor.",
+      "Eres perfecta para mí."
+    ],
+    b: [
+      "Estaré a tu lado siempre.",
+      "Eres mi dulce inspiración.",
+      "Seré tu fan siempre.",
+      "Te voy a cuidar con mi vida.",
+      "Tenerte me hace dichoso.",
+      "Lograremos todo juntos.",
+      "Cuentas con mi amor siempre.",
+      "Qué lindo caminar juntos.",
+      "Eres mi gran orgullo.",
+      "Alcanza todas tus metas.",
+      "Te admiro con el alma.",
+      "Me das muchísima luz.",
+      "Causas mis mejores sonrisas.",
+      "Gracias por tu presencia.",
+      "Te mereces todo lo hermoso.",
+      "Te amo con todo mi ser."
+    ]
+  },
+  {
+    a: [
+      "Tu risa es mi luz.",
+      "Nuestra química es hermosa.",
+      "Alegras toda mi vida.",
+      "Amo que sonrías conmigo.",
+      "Con nadie soy tan feliz.",
+      "Tus detalles me gustan.",
+      "Amo ser felices juntos.",
+      "Tus palabras me alegran.",
+      "A tu lado soy feliz.",
+      "Eres la causa de mis sonrisas.",
+      "Pasarla contigo es un sueño.",
+      "Me alegras la vida.",
+      "Nos amamos como siempre.",
+      "Quiero pasar la vida junto a ti.",
+      "Me das la fuerza para seguir .",
+      "Nos entendemos con miradas."
+    ],
+    b: [
+      "Me enamoro cada día mas de ti.",
+      "Nos amaremos por siempre.",
+      "Nuestra vibra es única.",
+      "Traes amor a mi vida.",
+      "Amarnos nos hace bien.",
+      "No cambio tus besos.",
+      "Le quitas la sombra a todo.",
+      "Siempre la pasamos hermoso.",
+      "Tu forma de ser me enamora.",
+      "Contigo todo es felicidad.",
+      "Me sacas sonrisas cada que estamos juntos.",
+      "Esa chispa tuya me encanta.",
+      "Gracias por tanta felicidad.",
+      "Tenemos un amor hermoso.",
+      "Eres mi sonrisa diaria.",
+      "Ti amuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu."
+    ]
+  },
+  {
+    a: [
+      "Decir te amo queda corto.",
+      "Van cuatro años juntos.",
+      "Gracias por tu lindo amor.",
+      "Eres el mejor regalo.",
+      "Me alegra haberte encontrado.",
+      "Te amo de verdad.",
+      "Estar contigo es lo mejor.",
+      "Estaré amándote cada día.",
+      "Soy feliz a tu lado.",
+      "Cuidaré siempre lo nuestro.",
+      ".",
+      "Me fascina absolutamente todo tuyo.",
+      "Gracias por hacerme feliz.",
+      "Esto es solo el comienzo.",
+      "Te elegiría mil veces.",
+      "Celebro amarte cada día."
+    ],
+    b: [
+      "Te amo un montón.",
+      "Fuiste la mejor elección.",
+      "Gracias por ser mi novia.",
+      "Quiero verte feliz siempre.",
+      "A tu lado soy feliz.",
+      "Te amo hoy y siempre.",
+      "Eres mi hermoso regalo.",
+      "Lo nuestro es para siempre.",
+      "Veo mi futuro contigo.",
+      "Te amo con el alma.",
+      "Gracias por cuatro años hermosos.",
+      "Vamos por una vida juntos.",
+      "Eres mi persona especial.",
+      "Encontré la verdadera dicha.",
+      "Te amo como el primer día.",
+      "Feliz aniversario mi vida."
+    ]
+  }
+];
+
+/* Fechas con frase propia. Clave: mes(0-11)-día. y0 = primer año en que ocurre dentro de su historia. */
+var DATES = {
+  "9-23": { y0: 2022, t: [
+    "Aquí empezó todo. El día que empezamos esta aventura juntos.",
+    "Un año de estar a tu lado. Aprendiendo a quererte cada día más.",
+    "Dos años juntos. Descubriendo lo bonito que es crecer a tu lado.",
+    "Tres años increíbles. Gracias por cada momento inolvidable.",
+    "Hoy cumplimos cuatro años. Mi plan favorito sigue siendo estar contigo. Ti amuuu, mi amor."
+  ] },
+  "5-9": { y0: 2023, t: [
+    "Hoy es mi cumpleaños y el mejor regalo de todos sigues siendo tú.",
+    "Otro cumpleaños mío celebrando la suerte de tenerte en mi vida.",
+    "Un cumpleaños más. Mi único deseo hoy es poder verte pronto.",
+  ] },
+  "5-12": { y0: 2023, t: [
+    "Es tu cumpleaños, lo que daria por pasarlo a tu lado.",
+  ] },
+  "11-24": { y0: 2022, t: [
+    "Quisiera pasar navidad a tu lado pero nose puede ya algun dia será",
+    
+  ] },
+  "11-25": { y0: 2022, t: [
+
+    "Feliz Navidad, mi amor. Espero que prontito la pasemos juntos en persona."
+  ] },
+  "11-31": { y0: 2022, t: [
+    "Último día del año, cerrando doce meses felices a tu lado.",
+    "Se acaba el año y tú te mantienes como lo mejor que me pasó.",
+    "Último día del año y mi primer pensamiento es para ti.",
+    "Cerrar el año hablando contigo es la mejor manera de terminarlo."
+  ] },
+  "0-1": { y0: 2023, t: [
+    "Año nuevo y mi primer deseo al cielo es seguir construyendo esto contigo.",
+    "Primer día del año y ya estoy pensando en ti desde temprano.",
+    "Feliz año nuevo, amor. Que este año venga lleno de momentos bonitos para los dos.",
+    "Feliz año nuevo, mi vida. Lo repito hoy y siempre:Ti amuuuuuuuuuuuuuu muchuuuuuuuuuuuuuuuuuuuu."
+  ] },
+  "1-14": { y0: 2023, t: [
+    "Mi persona favorita del mundo eres tú.", 
+  ] }
+};
+var GOLD_ONLY = { "9-23": 1, "5-9": 1, "5-12": 1, "11-24": 1, "11-25": 1, "11-31": 1, "0-1": 1, "1-14": 1 };
+
+/* Lo que se escribieron cada día 23 (clave: año-mes). */
+var MONTH_QUOTES = {
+  "2025-06": "Un mes más juntos recordando lo mucho que te quiero y lo feliz que me haces.",
+  "2025-08": "Gracias por seguir aguantándome un mes más, ti amuuu muchuuu.",
+  "2025-09": "Eres súper especial para mí y estoy muy orgulloso de ti, mi vida.",
+  "2026-01": "Sigues siendo mi personita favorita en el mundo. Lo que más quiero es verte pronto.",
+  "2026-02": "Un mes más comprobando que eres la chica que más quiero en esta vida.",
+  "2026-03": "Vamos por mucho más tiempo juntos. Gracias por todos los recuerdos bonitos.",
+  "2026-04": "Soy muy feliz de seguir contigo. No quiero a nadie más: solo a ti.",
+  "2026-05": "Ti amuuu muchuu, mi pdja.",
+  "2026-07": "Ti amuuu muchuuu como no tienes idea. Espero verte prontito, amor.",
+  "2026-08": "Sigues siendo mi persona favorita en el mundo y disfruto cada momento contigo.",
+  "2026-09": "Gracias por aguantarme otro mes, mi amor. Sabes que siempre puedes contar conmigo."
+};
+var MONTH_POOL = [
+  "Un mes más juntos y la verdad es que me sigues sacando la misma sonrisa de siempre.",
+  "Llegó otro 23 y solo puedo pensar en lo lindo que es tenerte cerquita.",
+  "Gracias por aguantarme otro mes y por todas las risas que nos echamos.",
+  "Pasan los meses y mi parte favorita del día sigue siendo hablar contigo.",
+  "Otro mes más y me sigo dando cuenta de lo mucho que te quiero.",
+  "Cada 23 me acuerdo de lo afortunado que soy de tener a alguien como tú a mi lado.",
+  "Gracias por este mes lleno de mensajes bonitos, bromas y risas.",
+  "Un mes más juntos y tengo  ganas de darte muchos abrazos.",
+  "Hoy es 23 y solo quería recordarte que me haces muy feliz.",
+  "Otro mes más compartiendo la vida contigo, y no lo cambiaría por nada.",
+  "Me encanta ver cómo pasa el tiempo y nosotros seguimos así de bien.",
+  "Qué lindo es saber que pase lo que pase, al final del día te tengo a ti.",
+  "Otro 23 para celebrar que nos queremos un montón.",
+  "Pasan los días y te vas volviendo cada vez más importante para mí.",
+  "Un mes más juntos ymi amor crece mucho más por ti.",
+  "Otro mes más juntos, aunque sea a la distancia.",
+  "Qué bonito es tenerte en mi vida y saber que contamos el uno con el otro.",
+  "Un 23 más para recordarte que eres mi chica favorita en todo el mundo.",
+  "Gracias por cada sonrisa, por cada audio y por estar ahí siempre.",
+  "Me fascina cómo con un simple mensaje me cambias el día por completo.",
+  "Un mes más aguantándonos con cariño y riéndonos de cualquier tontería.",
+  "Qué paz me da saber que te tengo en mi vida, feliz 23 mi amor.",
+  "Pasan los meses y me sigo convenciendo de que haberte conocido fue lo mejor.",
+  "Otro mes juntos y yo sigo con las mismas ganas de verte y abrazarte fuerte.",
+  "Gracias por este mes tan bonito, te quiero un montón, mi vida.",
+  "Cada 23 me pongo a pensar en todo lo que hemos pasado y me da mucha alegría.",
+  "Un mes más juntos y me sigues pareciendo la chica más linda del planeta.",
+  "Otro 23 más para guardarme tus abrazos para cuando nos veamos.",
+  "Gracias por hacer que este mes haya sido tan bonito, amorcito.",
+  "Un mes más compartiendo la vida contigo y disfrutando de cada detalle.",
+  "Hoy es 23 y solo quiero decirte una vez más: ti amuuu con todo mi corazón."
+];
+
+/* Días sueltos del chat. Clave: año-mes-día. */
+var CHAT_DAYS = {
+  "2025-07-02": "Pensando en ti y recordando lo mucho que te quiero hoy y siempre.",
+  "2025-08-19": "Siempre vas a ser lo más importante para mí, tenlo por seguro.",
+  "2025-10-07": "Un 'ti amuuu' nunca sobra, así que te lo digo hoy de nuevo.",
+  "2026-04-27": "Recordándote lo mucho que te quiero en un día cualquiera.",
+  "2026-06-01": "Aunque siempre tengas sueño, así dormilona te quiero con locura.",
+  "2026-09-12": "Te quiero un montón, mi amor. Palabras simples pero muy sinceras.",
+  "2026-09-13": "Enamorarme de ti fue literalmente la mejor decisión de mi vida."
+};
+
+
+var MESSAGES = {}, KIND = {};
+function dateOf(day) { var d = new Date(START.getTime()); d.setDate(d.getDate() + day); return d; }
+function two(n) { return (n < 10 ? "0" : "") + n; }
+function plural(n, s, p) { return n + " " + (n === 1 ? s : p); }
+(function build() {
+  var themed = [], monthUse = 0;
+  for (var day = 1; day <= N; day++) {
+    var d = dateOf(day), dd = d.getDate(), mm = d.getMonth(), yy = d.getFullYear(), key = mm + "-" + dd;
+    var iso = yy + "-" + two(mm + 1) + "-" + two(dd), ym = yy + "-" + two(mm + 1), spec = DATES[key];
+    if (day === 1) {
+      MESSAGES[day] = "Aquí empezó todo. Yo todavía no lo sabía, pero ya no había vuelta atrás."; KIND[day] = "gold";
+    } else if (spec && yy - spec.y0 >= 0 && yy - spec.y0 < spec.t.length) {
+      MESSAGES[day] = spec.t[yy - spec.y0]; KIND[day] = "gold";
+    } else if (dd === 23) {
+      var months = (yy - 2022) * 12 + (mm - 9);
+      if (months > 0) {
+        var y = Math.floor(months / 12), m = months % 12, parts = [];
+        if (y > 0) parts.push(plural(y, "año", "años"));
+        if (m > 0) parts.push(plural(m, "mes", "meses"));
+        MESSAGES[day] = "Hoy cumplimos " + parts.join(" y ") + ". " + (MONTH_QUOTES[ym] || MONTH_POOL[monthUse++ % MONTH_POOL.length]);
+        KIND[day] = "month";
+      } else themed.push(day);
+    } else if (CHAT_DAYS[iso]) {
+      MESSAGES[day] = CHAT_DAYS[iso]; KIND[day] = "gold";
+    } else themed.push(day);
+  }
+  /* El resto: parejas únicas escena + cierre dentro de un mismo tema */
+  var r = rng(2022), order = themed.slice();
+  for (var i = order.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)), t = order[i]; order[i] = order[j]; order[j] = t; }
+  var T = THEMES.length;
+  for (var n = 0; n < order.length; n++) {
+    var th = THEMES[n % T], k = Math.floor(n / T), a = k % 16, b = (a + Math.floor(k / 16)) % 16;
+    MESSAGES[order[n]] = th.a[a] + " " + th.b[b];
+  }
+})();
+function phraseFor(day) { return MESSAGES[day] || "Un día más contigo, y ya es de los buenos."; }
+
+var rand = rng(4242), pts = [];
+while (pts.length < N) {
+  var x = rand() * 2.5 - 1.25, y = rand() * 2.4 - 1.15;
+  if (Math.pow(x * x + y * y - 1, 3) - x * x * y * y * y <= 0) {
+    pts.push({ nx: (x + 1.25) / 2.5, ny: 1 - (y + 1.15) / 2.4, ph: rand() * 6.28, r: 0.9 + rand() * 0.9 });
+  }
+}
+var canvas = $("sky"), ctx = canvas.getContext("2d");
+var W = 0, H = 0, dpr = 1, visible = false, progress = reduce ? 1 : 0, selected = -1, t0 = performance.now();
+function resize() {
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var rect = canvas.getBoundingClientRect();
+  W = rect.width; H = rect.height;
+  canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  draw(performance.now());
+}
+function pos(p) { var pad = 16; return [pad + p.nx * (W - 2 * pad), pad + p.ny * (H - 2 * pad)]; }
+function draw(t) {
+  ctx.clearRect(0, 0, W, H);
+  var count = Math.floor(progress * N);
+  for (var i = 0; i < count; i++) {
+    var p = pts[i], xy = pos(p), day = i + 1, kind = KIND[day], special = kind === "gold", month = kind === "month", today = i === N - 1;
+    var tw = reduce ? 0.8 : 0.6 + 0.4 * Math.sin(t * 0.002 + p.ph);
+    ctx.beginPath();
+    if (today) {
+      var pulse = reduce ? 1 : 1 + 0.25 * Math.sin(t * 0.005);
+      ctx.fillStyle = "#ff7a9a"; ctx.shadowColor = "#ff7a9a"; ctx.shadowBlur = 18;
+      ctx.arc(xy[0], xy[1], 5.5 * pulse, 0, 6.283);
+    } else if (special) {
+      ctx.fillStyle = "#ffe3a8"; ctx.shadowColor = "#ffe3a8"; ctx.shadowBlur = 14;
+      ctx.arc(xy[0], xy[1], 3.8, 0, 6.283);
+    } else if (month) {
+      ctx.fillStyle = "#ffc9d6"; ctx.shadowColor = "#ffc9d6"; ctx.shadowBlur = 8;
+      ctx.arc(xy[0], xy[1], 2.5, 0, 6.283);
+    } else {
+      ctx.fillStyle = "rgba(255,240,215," + (0.35 + 0.55 * tw).toFixed(2) + ")"; ctx.shadowBlur = 0;
+      ctx.arc(xy[0], xy[1], p.r, 0, 6.283);
+    }
+    ctx.fill();
+  }
+  ctx.shadowBlur = 0;
+  if (selected >= 0 && selected < count) {
+    var s = pos(pts[selected]);
+    ctx.beginPath(); ctx.strokeStyle = "rgba(255,227,168,0.9)"; ctx.lineWidth = 1.5; ctx.arc(s[0], s[1], 11, 0, 6.283); ctx.stroke();
+  }
+}
+function loop(t) {
+  if (visible && progress < 1) progress = Math.min(1, progress + 0.012);
+  draw(t);
+  if (visible) requestAnimationFrame(loop);
+}
+new IntersectionObserver(function (e) {
+  var was = visible; visible = e[0].isIntersecting;
+  if (visible && !was) { if (reduce) draw(performance.now()); else requestAnimationFrame(loop); }
+}, { threshold: 0.2 }).observe(canvas);
+window.addEventListener("resize", resize);
+resize();
+
+
+
+function showStar(i) {
+  var d = dateOf(i + 1);
+  var box = $("sky-text"); box.innerHTML = "";
+  var when = document.createElement("div"); when.className = "when"; when.textContent = "Día " + fmt(i + 1) + " · " + fechaLarga(d);
+  box.appendChild(when);
+  var line = document.createElement("div"); line.className = "msg";
+  line.textContent = phraseFor(i + 1);
+  box.appendChild(line);
+}
+function intro() {
+  $("sky-text").innerHTML = '<div class="when">Toca una estrella</div><div class="msg">Cada una es un día nuestro.</div>';
+}
+intro();
+canvas.addEventListener("pointerdown", function (e) {
+  var r = canvas.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+  var best = -1, bd = 22 * 22, count = Math.floor(progress * N);
+  for (var i = 0; i < count; i++) {
+    var xy = pos(pts[i]), dx = xy[0] - mx, dy = xy[1] - my;
+    var dd = (dx * dx + dy * dy) * (KIND[i + 1] ? 0.35 : 1); /* las estrellas con mensaje pesan más */
+    if (dd < bd) { bd = dd; best = i; }
+  }
+  if (best >= 0) { selected = best; showStar(best); if (reduce) draw(performance.now()); }
+});
+
+/* Vales */
+var saved = {};
+try { saved = JSON.parse(safeGet("vales4") || "{}") || {}; } catch (e) { saved = {}; }
+var ticketsEl = $("tickets");
+VALES.forEach(function (txt, i) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "ticket";
+  b.setAttribute("aria-pressed", saved[i] ? "true" : "false");
+  b.innerHTML = "<small>Año " + (i + 1) + "</small><strong></strong><span class='stamp'>Canjeado</span>";
+  b.querySelector("strong").textContent = "Vale por " + txt.charAt(0).toLowerCase() + txt.slice(1);
+  b.addEventListener("click", function () {
+    var on = b.getAttribute("aria-pressed") !== "true";
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    saved[i] = on; safeSet("vales4", JSON.stringify(saved));
+  });
+  ticketsEl.appendChild(b);
+});
+
+/* Contrato */
+var yes = $("yes"), no = $("no"), decide = $("decide"), plea = $("plea"), dodges = 0, lastDodge = 0;
+var NO_LABELS = ["¿Seguro?", "Otra vez", "Casi", "Jaja no", "Piénsalo más", "Uy", "No me alcanzas", "¿Y si sí?", "Mejor no", "Nada"];
+var PLEAS = [
+  "Pensarlo toma tiempo y yo ya lo pensé por los dos.",
+  "Cuatro años de práctica y todavía intentas escapar. Qué tierna.",
+  "¿Ya comiste? Con energía se decide mejor.",
+  "Confío en que vas a apretar el otro botón.",
+  "Este botón está muy ocupado y no quiere que lo toques.",
+  "Tup sabes que la respuesta es otra.",
+  "Piña o fresa, da igual. Aquí solo hay un sí.",
+  "Si lo piensas con el corazón, ya respondiste.",
+  "El contrato tiene letra pequeña: dice que te quiero.",
+  "El botón rosado te está haciendo ojitos.",
+  "Amorcito, hazme caso.",
+  "Mira cómo corre: ni él quiere que lo pienses.",
+  "Si dices que sí, igual mañana te pregunto si ya comiste.",
+  "Ti amuuu. Ahora sí, aprieta el rosado.",
+  "Dato: llegaste hasta aquí. Eso ya es un sí.",
+  "Tengo paciencia. Llevo cuatro años practicando contigo.",
+  "No es una pregunta difícil, amor. Es la más fácil del mundo.",
+  "Dame una razón para que pienses. Yo te doy mil para que digas que sí.",
+  "Estoy mirando tu pantalla con toda mi esperanza.",
+  "Cada vez que lo intentas, aumenta mi cariño por ti.",
+  "Es el único botón que no te va a dejar elegir mal.",
+  "Si tuvieras que pensar, ya habría pasado otro año.",
+  "¿Sigues leyendo? Entonces ya aceptaste, solo falta apretar.",
+  "Te cuento un secreto: el botón rosado nunca falla.",
+  "Un clic y celebramos otros cuatro años.",
+  "Te quiero tanto que ni esquivando me das ganas de rendirme.",
+  "Se puede pensar, pero con una mano en el botón correcto.",
+  "Imagina que estoy al lado esperando con cara de ilusión.",
+  "No hay nada que pensar, solo algo que sentir.",
+  "El botón de la izquierda tiene un trabajo sencillo: hacerte sonreír.",
+  "Hasta la letra pequeña dice «sí».",
+  "Cuando me dices que sí, me haces el día. Otra vez.",
+  "Hay botones que no se tocan: ese es uno.",
+  "Esto es un contrato de amor. No admite dudas.",
+  "Tú puedes todo. Incluso decirme que sí."
+];
+var pleaOrder = [], noOrder = [];
+function shuffled(n) { var a = [], i, j, t; for (i = 0; i < n; i++) a.push(i); for (i = n - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function nextOf(order, n) { if (!order.length) { var a = shuffled(n); order.push.apply(order, a); } return order.shift(); }
+function dodge(e) {
+  if (e) { e.preventDefault(); }
+  var now = Date.now();
+  if (now - lastDodge < 350) return; /* un solo toque dispara varios eventos */
+  lastDodge = now; dodges++;
+  no.textContent = NO_LABELS[nextOf(noOrder, NO_LABELS.length)];
+  plea.textContent = PLEAS[nextOf(pleaOrder, PLEAS.length)];
+  var cw = decide.clientWidth, ch = decide.clientHeight;
+  no.style.position = "absolute";
+  var bw = no.offsetWidth, bh = no.offsetHeight;
+  no.style.left = Math.max(0, Math.random() * (cw - bw)) + "px";
+  no.style.top = Math.max(0, Math.random() * (ch - bh)) + "px";
+  yes.style.transform = "scale(" + Math.min(1.4, 1 + dodges * 0.05) + ")";
+}
+no.addEventListener("pointerenter", dodge);
+no.addEventListener("pointerdown", dodge);
+no.addEventListener("click", dodge);
+
+yes.addEventListener("click", function () {
+  decide.hidden = true; plea.hidden = true;
+  $("signed").hidden = false;
+  $("signed-date").textContent = "Firmado el " + fechaLarga(new Date());
+  if (!reduce) hearts();
+});
+function hearts() {
+  var c = $("confetti"), x = c.getContext("2d");
+  var dp = Math.min(window.devicePixelRatio || 1, 2);
+  c.width = innerWidth * dp; c.height = innerHeight * dp; x.setTransform(dp, 0, 0, dp, 0, 0);
+  var cols = ["#ff7a9a", "#ffe3a8", "#f3ecf7", "#c9a7ff"], ps = [];
+  for (var i = 0; i < 90; i++) {
+    ps.push({ x: innerWidth / 2, y: innerHeight * 0.9, vx: (Math.random() - 0.5) * 14, vy: -(8 + Math.random() * 12), s: 14 + Math.random() * 22, c: cols[i % cols.length], r: (Math.random() - 0.5) * 0.1, a: 0 });
+  }
+  var start = performance.now();
+  (function frame(t) {
+    var el = t - start; x.clearRect(0, 0, innerWidth, innerHeight);
+    ps.forEach(function (p) {
+      p.vy += 0.32; p.x += p.vx; p.y += p.vy; p.a += p.r;
+      x.save(); x.translate(p.x, p.y); x.rotate(p.a); x.globalAlpha = Math.max(0, 1 - el / 3800);
+      x.fillStyle = p.c; x.font = p.s + "px serif"; x.textAlign = "center"; x.fillText("♥", 0, 0); x.restore();
+    });
+    if (el < 3800) requestAnimationFrame(frame); else x.clearRect(0, 0, innerWidth, innerHeight);
+  })(start);
+}
+</script>
+
+</body></html>
